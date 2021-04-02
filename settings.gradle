@@ -1,0 +1,5 @@
+rootProject.name = 'nj'
+include(':nj-config')
+include(':nj-core')
+include(':nj-web')
+include(':nj-module')

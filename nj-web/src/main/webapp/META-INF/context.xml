@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<context>
+	<Resource name="jdbc/njdb" 
+			  auth="Container" 
+			  type="javax.sql.DataSource"
+			  factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+              maxTotal="100"
+              maxIdle="30"
+              maxWaitMillis="10000"
+              username="sa" 
+              password="swell9941" 
+              driverClassName="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
+              url="jdbc:log4jdbc:sqlserver://localhost:1433;databaseName=njdb"/>
+              
+ <!--    <Resource name="jdbc/njdb" 
+			  auth="Container" 
+			  type="javax.sql.DataSource"
+			  factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+              maxTotal="100"
+              maxIdle="30"
+              maxWaitMillis="10000"
+              username="nj" 
+              password="nj@9941" 
+              driverClassName="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
+              url="jdbc:log4jdbc:sqlserver://192.168.0.128:1433;databaseName=njdb"/> -->
+</context>

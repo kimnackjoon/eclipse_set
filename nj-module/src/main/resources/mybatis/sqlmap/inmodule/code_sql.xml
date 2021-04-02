@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nackjoon.nj.inmodule.mapper.CodeMapper">
+	<!-- 단일 코드건 정보 가져오기  -->
+	<select id="selectCode" resultType="hashmap" parameterType="hashmap">
+	<![CDATA[
+		SELECT
+			TB.PRT_CD
+			, TB.YR
+			, TB.CD
+			, TB.NM
+			, TB.RMK
+		FROM
+			TB_CODE TB
+		WHERE
+			TB.PRT_CD = #{prt_cd}
+			AND TB.CD = #{cd}
+			AND TB.USE_YN = 'Y'
+			AND ((YR = '0000') OR (YR = #{yr}))
+		ORDER BY
+			TB.PRT_CD
+			, TB.CD
+	]]>
+	</select>
+
+
+	<!-- 코드 리스트 가져오기  -->
+	<select id="selectCodeList" resultType="hashmap" parameterType="hashmap">
+	<![CDATA[
+		SELECT
+			TB.PRT_CD
+			, TB.YR
+			, TB.CD
+			, TB.NM
+			, TB.RMK
+		FROM
+			TB_CODE TB
+		WHERE
+			USE_YN = 'Y'
+	]]>
+		<if test="prt_cd != null">
+	<![CDATA[
+			AND TB.PRT_CD = #{prt_cd}
+	]]>
+		</if>
+	<if test="CODE_SQL != null and CODE_SQL != ''.toString() ">
+	<![CDATA[
+			${CODE_SQL}
+	]]>
+	</if> 
+	<![CDATA[
+			AND ((YR = '0000') OR (YR = #{yr}))
+		ORDER BY
+			TB.PRT_CD
+			, TB.DISP_ORD
+			, TB.NM
+	]]>
+	</select>
+</mapper>
